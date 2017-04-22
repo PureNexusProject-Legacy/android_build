@@ -532,13 +532,20 @@ function add_lunch_combo()
 
 function print_lunch_menu()
 {
-    local uname=$(uname)
-    echo
-    echo "You're building on" $uname
-    if [ "$(uname)" = "Darwin" ] ; then
-       echo "  (ohai, iSheep!!)"
-    fi
-    echo
+
+    echo -e "\033[01;36m"
+    echo -e "                The" 
+    echo -e ""
+    echo -e " ██████╗ ██╗   ██╗██████╗ ███████╗  ███╗   ██╗███████╗██╗  ██╗██╗   ██╗███████╗ "
+    echo -e " ██╔══██╗██║   ██║██╔══██╗██╔════╝  ████╗  ██║██╔════╝╚██╗██╔╝██║   ██║██╔════╝ "
+    echo -e " ██████╔╝██║   ██║██████╔╝█████╗    ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗ "
+    echo -e " ██╔═══╝ ██║   ██║██╔══██╗██╔══╝    ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚════██║ "
+    echo -e " ██║     ╚██████╔╝██║  ██║███████╗  ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║ "
+    echo -e " ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝  ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝ "
+    echo -e ""
+    echo -e "                                                      Project"
+    echo -e "\033[0m"
+
     if [ "z${CUSTOM_DEVICES_ONLY}" != "z" ]; then
        echo "Breakfast menu... pick a combo:"
        echo " "
@@ -554,11 +561,6 @@ function print_lunch_menu()
         echo " $i. $choice "
         i=$(($i+1))
     done
-
-    if [ "z${CUSTOM_DEVICES_ONLY}" != "z" ]; then
-       echo " "
-       echo "... time to mka bacon!!"
-    fi
 
     echo
 }
@@ -617,7 +619,7 @@ function lunch()
         answer=$1
     else
         print_lunch_menu
-        echo -n "Which would you like? [aosp_arm-eng] "
+        echo -n "Which would you like? "
         read answer
     fi
 
